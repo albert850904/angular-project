@@ -6,9 +6,6 @@
 <hr />
 <div class="row" *ngFor="let item of recipes">
   <div class="col-xs-12">
-    <app-recipe-item
-      [itemProps]="item"
-      (recipeSelected)="onRecipeSelected(item)"
-    ></app-recipe-item>
+    <app-recipe-item [itemProps]="item"></app-recipe-item>
   </div>
 </div>
