@@ -23,8 +23,10 @@
         <li>
           <a (click)="addRecipeToList()" style="cursor: pointer">To List</a>
         </li>
-        <li><a href="#">Edit Recipe</a></li>
-        <li><a href="#">Delete Recipe</a></li>
+        <li>
+          <a [routerLink]="['/recipes', recipe.id, 'edit']">Edit Recipe</a>
+        </li>
+        <li><a>Delete Recipe</a></li>
       </ul>
     </div>
   </div>
