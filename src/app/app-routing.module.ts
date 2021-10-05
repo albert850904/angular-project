@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
+import { RecipesResolverService } from './recipes/recipes-resolver.service';
 import { RecipesComponent } from './recipes/recipes.component';
 import { StartingRecipeComponent } from './recipes/starting-recipe/starting-recipe.component';
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
@@ -11,6 +12,7 @@ const appRoutes: Routes = [
   {
     path: 'recipes',
     component: RecipesComponent,
+    resolve: [RecipesResolverService],
     children: [
       { path: '', component: StartingRecipeComponent }, // default case (localhost:4200/recipe/)
       {
@@ -20,10 +22,12 @@ const appRoutes: Routes = [
       {
         path: ':id',
         component: RecipeDetailComponent,
+        resolve: [RecipesResolverService],
       },
       {
         path: ':id/edit',
         component: RecipeEditComponent,
+        resolve: [RecipesResolverService],
       },
     ],
   },
