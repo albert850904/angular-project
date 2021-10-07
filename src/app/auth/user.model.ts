@@ -2,7 +2,7 @@ export class User {
   // 才可以用new的方式見一個新的User obj
   constructor(
     public email: string,
-    id: string,
+    public id: string,
     private _token: string,
     private _tokenExpirationDate: Date
   ) {}

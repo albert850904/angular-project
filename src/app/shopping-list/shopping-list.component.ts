@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 import { Ingredient } from '../shared/ingredient.model';
 // import { ShoppingListService } from './shopping-list.service';
-import * as fromShoppingList from '../shopping-list/store/shopping-list.reducer';
+import * as fromApp from '../store/app.reducer';
 import * as ShoppingListActions from '../shopping-list/store/shopping-list.actions';
 
 @Component({
@@ -17,7 +17,7 @@ export class ShoppingListComponent implements OnInit {
   // Store<Store長怎樣, shoppingList 是在app.module定義的名稱>
   constructor(
     // private shoppingListService: ShoppingListService,
-    private store: Store<fromShoppingList.AppState>
+    private store: Store<fromApp.AppState>
   ) {}
 
   ngOnInit() {
