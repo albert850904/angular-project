@@ -7,6 +7,7 @@ import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { AuthService } from '../auth.service';
 import { User } from '../user.model';
 import * as AuthActions from './auth.actions';
+import { environment } from 'src/environments/environment';
 
 export interface AuthResData {
   idToken: string;
@@ -71,7 +72,8 @@ export class AuthEffects {
     switchMap((authData: AuthActions.LoginStart) => {
       return this.http
         .post<AuthResData>(
-          'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDh_s1Uwref8-qFnzZsk-gwK1rNt_uEPAo',
+          'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=' +
+            environment.firebaseAPIKey,
           {
             email: authData.payload.email,
             password: authData.payload.password,
@@ -112,7 +114,8 @@ export class AuthEffects {
     switchMap((signupActions: AuthActions.SignupStart) => {
       return this.http
         .post<AuthResData>(
-          'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDh_s1Uwref8-qFnzZsk-gwK1rNt_uEPAo',
+          'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=' +
+            environment.firebaseAPIKey,
           {
             email: signupActions.payload.email,
             password: signupActions.payload.password,
